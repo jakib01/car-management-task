@@ -14,7 +14,7 @@ class ModelYear extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
-        'model_id','year_num'
+        'model_id','year_num','expiry'
     ];
     protected $dates = ['deleted_at'];
 
@@ -25,6 +25,6 @@ class ModelYear extends Model
 
     public function model(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->belongsTo(CarModel::class, 'make_id');
+        return $this->belongsTo(CarModel::class, 'model_id','id');
     }
 }

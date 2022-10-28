@@ -18,8 +18,19 @@ class CarMake extends Model
     ];
     protected $dates = ['deleted_at'];
 
-    public function carModel(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function carModels(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-        return $this->hasMany(CarModel::class);
+        return $this->hasMany(CarModel::class, 'make_id','id');
     }
+
+    public function carModel(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(CarModel::class, 'id','make_id');
+    }
+
+//    public function carModel(): \Illuminate\Database\Eloquent\Relations\HasOne
+//    {
+//        return $this->hasOne(CarModel::class,'make_id','id');
+//    }
+
 }

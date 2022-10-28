@@ -20,11 +20,16 @@ class CarModel extends Model
 
     public function carMake(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->belongsTo(CarMake::class, 'make_id');
+        return $this->belongsTo(CarMake::class, 'make_id', 'id');
     }
 
-    public function modelYear(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function modelYears(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-        return $this->hasMany(ModelYear::class);
+        return $this->hasMany(ModelYear::class,'model_id');
+    }
+
+    public function modelYear(): \Illuminate\Database\Eloquent\Relations\belongsTo
+    {
+        return $this->belongsTO(ModelYear::class,'id','model_id');
     }
 }

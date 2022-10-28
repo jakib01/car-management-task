@@ -17,6 +17,7 @@ return new class extends Migration
             $table->increments('id');
             $table->Integer('model_id')->unsigned()->nullable();
             $table->Integer('year_num')->nullable();
+            $table->BigInteger('expiry')->nullable();
             $table->timestamps();
             $table->softDeletes();
 
